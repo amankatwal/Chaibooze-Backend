@@ -7,14 +7,15 @@ import Razorpay from "razorpay";
 
 
 const port =process.env.PORT;
-
+app.set("trust proxy", 1);
 app.use(session({
     secret: process.env.SESSION_SECRET,
     resave: false,
-    saveUninitialized: true,
+    saveUninitialized: false,
     cookie :{
         maxAge: 1000*60*60*24*7,
-        secure : true
+        secure : true,
+        samesite: "none"
     }
 }));
 
